@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 $mensaje = "";
 require_once("configuracion/clsBD.php");
 $objDatos = new clsDatos();
