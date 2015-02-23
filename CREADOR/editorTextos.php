@@ -5,13 +5,13 @@
 	$autor= $_SESSION['usuario'];
 	require_once("configuracion/clsBD.php");
 	$objDatos = new clsDatos();
-
+	$nombre =$_SESSION['usuario'];
 	if ($_POST) {
 		$idNombre = array_key_exists('nombre', $_POST) ? $_POST['nombre'] : null;
 		$idArea = array_key_exists('area', $_POST) ? $_POST['area'] : null;
 		$idDescripcion = array_key_exists('descripcion', $_POST) ? $_POST['descripcion'] : null;
 
-		crearEditorTextos($idNombre, $idArea, $idDescripcion, $autor, $idCuestionario);
+		crearEditorTextos($idNombre, $idArea, $idDescripcion, $autor);
 	}
 ?>
 <!DOCTYPE HTML>
@@ -65,16 +65,21 @@
 				<div id="content" class="inner">
 					
 					<header>
+						<b><h1>USUARIO:
+					<?php
+					echo $nombre;
+					?></b>
+				</h1>
 						<h2>EDITOR TEXTOS</h2>
 					</header>
 						<form action="editorTextos.php" method="post">
 						<p>
 						Nombre:<br> 
-						<input type:"text" name="nombre"><br><br>
+						<input type:"text" name="nombre" required><br><br>
 						Area:<br>
-						<input type:"text" name="area"><br><br>
-						Descripción:<br>
-						<textarea class="textarea2" name="descripcion" rows=automatically cols=automatically placeholder="¡Escriba aca el contenido del texto!"></textarea>
+						<input type:"text" name="area"required><br><br>
+						Texto:<br>
+						<textarea class="textarea2" name="descripcion" rows=automatically cols=automatically placeholder="¡Escriba aca el contenido del texto!" required></textarea>
 					<br><br>
 					<input type="submit" value="GUARDAR"><br><br>
 				</form>

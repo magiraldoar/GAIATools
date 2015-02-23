@@ -7,7 +7,7 @@
 	$mensaje = "";
 	require_once("configuracion/clsBD.php");
 	$objDatos = new clsDatos();
-
+	$nombre =$_SESSION['usuario'];
 	if ($_POST) { 
 		$idNombre = array_key_exists('nombre', $_POST) ? $_POST['nombre'] : null;
 		$idDescripcion = array_key_exists('descripcion', $_POST) ? $_POST['descripcion'] : null;
@@ -72,6 +72,11 @@
 				<div id="content" class="inner">
 					
 					<header>
+						<b><h1>USUARIO:
+						<?php
+						echo $nombre;
+						?></b>
+						</h1>
 						<h2>REGISTRO <BR>
 						CUESTIONARIO</h2>
 					</header>

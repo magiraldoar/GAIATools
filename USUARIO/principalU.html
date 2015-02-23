@@ -1,6 +1,9 @@
 <!DOCTYPE HTML>
 <?php
+require_once("configuracion/clsBD.php");
+$objDatos = new clsDatos();
 session_start();
+$nombre =$_SESSION['usuario'];
 ?>
 <html>
 	<head>
@@ -54,10 +57,12 @@ session_start();
 				<div class="inner">
 					
 					<header>
-						<h2>APLICACIONES</h2>
+						<b><h1>Bienvenido
 						<?php
-						echo "bienvenido". $SESSION['user'].".";
-						?>
+						echo $nombre;
+						?></b>
+						</h1>
+						<h2>APLICACIONES</h2>
 					</header>
 					<p>
 						

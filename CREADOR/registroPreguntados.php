@@ -6,7 +6,7 @@ session_start();
 	$mensaje = "";
 	require_once("configuracion/clsBD.php");
 	$objDatos = new clsDatos();
-
+	$nombre =$_SESSION['usuario'];
 	if ($_POST) { 
 		$idNombre = array_key_exists('nombre', $_POST) ? $_POST['nombre'] : null;
 		$idDescripcion = array_key_exists('descripcion', $_POST) ? $_POST['descripcion'] : null;
@@ -70,6 +70,11 @@ session_start();
 				<div id="content" class="inner">
 					
 					<header>
+						<b><h1>USUARIO:
+						<?php
+						echo $nombre;
+						?></b>
+						</h1>
 						<h2>PREGUNTADOS</h2>
 					</header>
 					<form action="registroPreguntados.php?" method="post">

@@ -48,7 +48,7 @@ $nombre =$_SESSION['usuario'];
 								<li><a href="contact.html">CUESTIONARIO</a></li>
 							</ul>
 						</li>
-						
+						<li class="current"><a href="logout.php" onClick="return confirmClick();">CERRAR SESIÓN</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -70,7 +70,7 @@ $nombre =$_SESSION['usuario'];
 					</header>
 					<p>
 						
-						<a  href="principalC.html"><img src="ciego.png" width="300" heigth="300"></a>
+						<a  href="principalC.php"><img src="ciego.png" width="300" heigth="300"></a>
 						<a  href="#"><img src="sordo.png" width="300" heigth="300"></a><br>
 						<a  href="#"><img src="mudo.png" width="300" heigth="300"></a>
 						<a  href="#"><img src="discapacitado.png" width="300" heigth="300"></a>
@@ -102,3 +102,12 @@ $nombre =$_SESSION['usuario'];
 <?php
     $objDatos->cerrarConexion();
 ?>
+<script type="text/javascript">
+	function confirmClick() {
+		if(confirm("desea cerrar sesión?")) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+	</script>

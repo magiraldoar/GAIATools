@@ -7,7 +7,7 @@ session_start();
 	$herramienta = "preguntados";
 	require_once("configuracion/clsBD.php");
 	$objDatos = new clsDatos();
-
+	$nombre =$_SESSION['usuario'];
 	if ($_POST) {
 		//$id_preguntados = $_GET['id'];
 		$pregunta = array_key_exists('pregunta', $_POST) ? $_POST['pregunta'] : null;
@@ -95,6 +95,11 @@ session_start();
 				<div id="content" class="inner">
 					
 					<header>
+						<b><h1>USUARIO:
+						<?php
+						echo $nombre;
+						?></b>
+						</h1>
 						<h2>PREGUNTADOS</h2>
 					</header>
 					<form action="preguntados.php?id=<?php echo $_GET['id']; ?>" method="post">

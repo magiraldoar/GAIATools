@@ -1,3 +1,9 @@
+<?php
+require_once("configuracion/clsBD.php");
+$objDatos = new clsDatos();
+session_start();
+$nombre =$_SESSION['usuario'];
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -37,6 +43,7 @@
 						<li><a href="no-sidebar.html">LECTOR Y EDITOR DE TEXTO</a></li>
 						<li><a href="contact.html">CUESTIONARIO</a></li>
 					</ul>
+					<li class="current"><a href="logout.php" onClick="return confirmClick();">CERRAR SESIÓN</a></li>
 				</li>
 				
 			</ul>
@@ -46,6 +53,11 @@
 		<div class="inner">
 			
 			<header>
+				<b><h1>USUARIO:
+					<?php
+					echo $nombre;
+					?></b>
+				</h1>
 				<h2>HERRAMIENTAS <BR>
 					AUTOR</h2>
 				</header>
@@ -78,3 +90,12 @@
 
 	</body>
 	</html>
+	<script type="text/javascript">
+	function confirmClick() {
+		if(confirm("desea cerrar sesión?")) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+	</script>

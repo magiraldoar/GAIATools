@@ -8,6 +8,7 @@
 	$idTipoPregunta = 1;
 	require_once("configuracion/clsBD.php");
 	$objDatos = new clsDatos();
+	$nombre =$_SESSION['usuario'];
 	if ($_POST) {
 		$pregunta = array_key_exists('pregunta', $_POST) ? $_POST['pregunta'] : null;
 		$respuesta = array_key_exists('respuesta', $_POST) ? $_POST['respuesta'] : null;
@@ -72,6 +73,11 @@
 				<div id="content" class="inner">
 					
 					<header>
+						<b><h1>USUARIO:
+					<?php
+					echo $nombre;
+					?></b>
+				</h1>
 						<h2>PREGUNTA ABIERTA</h2>
 					</header>
 					<form action="preguntaAbierta.php" method="post">
