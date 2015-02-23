@@ -1,0 +1,48 @@
+/*
+Theme Name: Wordpress FSS Theme
+Description: A general Wordpress theme using FSS and incorporating User Interface Options
+Author: Heidi Valles, Anastasia Cheetham
+Version: 1.0
+*/
+
+.fl-site-wrapper {
+    min-width: 800px;
+    max-width: 1280px;
+}
+.fl-site-link a {
+    background-repeat: no-repeat;
+    background-image: url('images/fluid_66x40_rgb_transparentBkg_bw-PlainBlack.png');
+    display: block;
+    height: 5em;
+}
+.fl-site-link span {
+    position: relative;
+    top: 3.8em;
+}
+.fl-site-skipto a:link, .fl-site-skipto a:visited {
+    color: #FFFFFF;
+    float: left;
+}
+
+.fl-site-header {
+    min-width: 800px;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.fl-site-footer {
+    margin:  1em 0;
+    text-align: center;
+}
+
+.fl-site-nav-main {
+    float: right;
+}
+.fl-site-nav-main ul li {
+    display: inline;
+    padding: 0 0.5em;
+}
+
+.fl-uiOptions-fatPanel .fl-panelBar {
+    position: relative;
+}
