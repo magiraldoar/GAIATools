@@ -6,9 +6,43 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-#head img
+/*#head img{
+	;
+}*/
 
+#pregAbierta{
+	margin-top: 56px;
+	border:1px solid white;
+}
+#pregCerrada{
+	margin-top: 56px;
+	border:1px solid white;
+}
 
+#abierta{
+	display: inline-block;
+	border: 1px solid white;
+	padding: 2px;
+	border-radius: 5px 5px 0 0;
+	float: left;
+	cursor: pointer;
+}
+#abierta:hover{
+	background: white;
+	color: black;
+}
+#cerrada{
+	display: inline-block;
+	border: 1px solid white;
+	padding: 2px;
+	border-radius: 5px 5px 0 0;
+	float: left;
+	cursor: pointer;
+}
+#cerrada:hover{
+	background: white;
+	color: black;
+}
 
  
 .logo{

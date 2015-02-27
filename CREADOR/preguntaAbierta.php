@@ -37,6 +37,7 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
+		<script type="text/javascript" src="js/arrive.js"></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -67,32 +68,66 @@
 			</header>
 			<section>
 			</section>
-			
 			<section id="banner">
 			
 				<div id="content" class="inner">
-					
-					<header>
-						<b><h1>USUARIO:
-					<?php
-					echo $nombre;
-					?></b>
-				</h1>
-						<h2>PREGUNTA ABIERTA</h2>
-					</header>
-					<form action="preguntaAbierta.php" method="post">
-					<p class="pre">
-						pregunta:   
-						<input class="pre" type="text" name="pregunta"><br><br>
-						<textarea class="textarea1" name="respuesta" rows=automatically cols=automatically placeholder="RESPUESTA"></textarea><br><br>
-						<input type="submit" value="guardar"> 
-					</form>
-					<br><br>
-					<a  href="preguntaAbierta.php"><img src="mas.png" width="70" heigth="70" align="right">  </a>
-					<a  href="principalC.html"><img src="15.png" width="70" heigth="70" align="right"> "  " </a>
-					<a  href="registroCuestionario.php"><img src="17.png" width="70" heigth="70" align="right"> </a>
-					</p>
-					
+					<b><h1>USUARIO:
+						<?php
+						echo $nombre;
+						?></b>
+					</h1>
+					<div id="tipopreg">
+						<div id="abierta" class="selecPreg">Abierta</div>
+						<div id="cerrada" class="selecPreg">Cerrada</div>
+					</div>
+					<div id="pregAbierta">
+						<br>
+						<header>
+							<h2>PREGUNTA ABIERTA</h2>
+						</header>
+						<form action="preguntaAbierta.php" method="post">
+						<p class="pre">
+							Pregunta:   
+							<input class="pre" type="text" name="pregunta"><br><br>
+							<textarea class="textarea1" name="respuesta" rows=automatically cols=automatically placeholder="RESPUESTA"></textarea><br><br>
+							<input type="submit" value="guardar"> 
+						</p>
+						</form>
+						<br><br>
+						<a  href="preguntaAbierta.php"><img src="mas.png" width="70" heigth="70" align="right">  </a>
+						<a  href="principalC.html"><img src="15.png" width="70" heigth="70" align="right"> "  " </a>
+						<a  href="registroCuestionario.php"><img src="17.png" width="70" heigth="70" align="right"> </a>
+					</div>
+					<div id="pregCerrada">
+						<br>
+						<header>
+							<h2>PREGUNTA CERRADA</h2>
+						</header>
+						<form action="preguntaCerrada.php" method="post">
+							<p class="preg">
+								
+								Pregunta:<br><br>  
+								<textarea class="textarea1" name="pregunta" rows=automatically cols=automatically placeholder="¡Escriba aca su pregunta!"></textarea><br><br>
+								
+								<div class="ans">
+								1° opcion:
+								<input  type="text" name="1" id="prueba" onchange="myFunction(this.value)"><br><br>
+								2° opcion:   
+								<input type="text" name="2" onchange="myFunction(this.value)"><br><br>
+								3° opcion:   
+								<input type="text" name="3" onchange="myFunction(this.value)"><br><br>
+								4° opcion:   
+								<input type="text" name="4" onchange="myFunction(this.value)"><br><br>
+								</div>
+								RESPUESTA: <select id="respuesta" name="respuesta"></select>
+							</p>
+							<input type="button" id="add" value="ADICIONAR OPCION" ><br><br>
+							<input type="submit" name="guardar" value="GUARDAR"><br><br>
+						</form>
+						<a  href="preguntaAbierta.php"><img src="mas.png" width="70" heigth="70" align="right">  </a>
+						<a  href="principalC.html"><img src="15.png" width="70" heigth="70" align="right"> "  " </a>
+						<a  href="registroCuestionario.php"><img src="17.png" width="70" heigth="70" align="right"> </a>
+					</div>					
 				</div>
 
 			</section>
@@ -116,3 +151,13 @@
 <?php
     $objDatos->cerrarConexion();
 ?>
+<script type="text/javascript">
+$("#add").click(function(){
+	var name = parseInt($(".ans > input").last()[0].name)+1
+	$(".ans").append(name+"° opcion: <input type=text name="+name+" onchange=myFunction(this.value)><br><br>")
+});
+
+function myFunction(val) {
+	$('#respuesta').append('<option value='+val+' selected="selected">'+val+'</option>');
+}
+</script>

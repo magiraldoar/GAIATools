@@ -142,10 +142,6 @@
 				</ul>
 			
 			</footer>
-
-
-
-
 </body>
 </html>
 <?php
