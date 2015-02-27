@@ -3,7 +3,6 @@
 	session_start();
 	include("base/inicioSql.php");
 	$mensaje = "";
-	$idCuestionario= $_SESSION['idCuestionario'];
 	$herramienta = "cuestionario";
 	$idTipoPregunta = 1;
 	require_once("configuracion/clsBD.php");
@@ -14,8 +13,9 @@
 		$respuesta = array_key_exists('respuesta', $_POST) ? $_POST['respuesta'] : null;
 		if ("cuestionario" == $herramienta ) {
 
-			crearPreguntaCuestionario($pregunta, $respuesta, $idTipoPregunta);
+			crearPreguntaCuestionario($pregunta, $respuesta, $idTipoPregunta, $_SESSION['id_cuestionario']);
 		}
+		header("location:cuestionario.php");
 	}
 
 ?>

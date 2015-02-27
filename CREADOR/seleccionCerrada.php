@@ -59,8 +59,8 @@
 						<br><br>
 						<select name="ramos" onchange="location = this.value">  
 						<option selected>Selecciona</option> 
-						<option id="1" value="preguntaAbierta.php">pregunta abierta</option>
-						<option id="2" value="seleccionCerrada.php" >pregunta cerrada</option> 
+						<option id="2" value="preguntaCerrada.php" >pregunta multiopcion</option>
+						<option id="3" value="preguntaTrueFalse.php">falso y verdadero</option>  
 						</select>  
 
 					</p>

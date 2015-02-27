@@ -83,8 +83,8 @@ if($_POST){
 					<p>
 						<form method="post" action="indexC.php">
             			<img src="1.png" width="200" heigth="200"><br><br>
-                		<label id="nombre">Usuario</label><br><input type="text" id="user" name="user" /><br><br>
-                		<label id="nombre">Contraseña</label><br><input type="password" id="pass" name="pass"/><br><br>
+                		<label id="nombre">Usuario</label><br><input type="text" id="user" name="user" required/><br><br>
+                		<label id="nombre">Contraseña</label><br><input type="password" id="pass" name="pass" required/><br><br>
                 		<label id="mensaj"><?php echo $mensaje; ?></label>
                			<br><br>
                 		<input type="submit" value="INICIAR SESION"/><br><br>

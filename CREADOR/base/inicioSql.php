@@ -27,16 +27,12 @@
 		$sql= "INSERT INTO editor_texto(nombre, descripcion, area, autor, id_ha)
 		 VALUES ('$idNombre', '$idDescripcion', '$idArea', '$autor', 1)";
 		$objUsuar->operacionesCrud($sql);
-		
 	}
 	function crearCuestionario($idNombre, $idDescripcion, $idArea, $autor){
 		$objUsuar = new clsDatos();
 		$sql= "INSERT INTO cuestionario(nombre, descripcion, area, autor, id_ha)
 		 VALUES ('$idNombre', '$idDescripcion', '$idArea', '$autor', 1)";
-		 $sqls ="SELECT currval('cuestionario_id_cuestionario_seq')";
 		$objUsuar->operacionesCrud($sql);
-		$objUsuar->operacionesCrud($sqls);
-		return $sqls;
 	}
 	function crearPregunta($pregunta, $respuesta, $id_preguntados){
 		$objUsuar = new clsDatos();	
@@ -46,10 +42,10 @@
 		$objUsuar->operacionesCrud($sql);
 		
 	}
-	function crearPreguntaCuestionario($pregunta, $respuesta, $idTipoPregunta){
+	function crearPreguntaCuestionario($pregunta, $respuesta, $idTipoPregunta, $id_cuestionario){
 		$objUsuar = new clsDatos();	
-		$sql= "INSERT INTO pregunta (pregunta, respuesta, id_tipo_pregunta)
-		 VALUES ('$pregunta', '$respuesta', '$idTipoPregunta')";
+		$sql= "INSERT INTO pregunta (pregunta, respuesta, id_tipo_pregunta, id_cuestionario)
+		 VALUES ('$pregunta', '$respuesta', '$idTipoPregunta', '$id_cuestionario')";
 		$objUsuar->operacionesCrud($sql);
 		
 	}
