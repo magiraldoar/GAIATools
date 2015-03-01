@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include("base/inicioSql.php");
 	$mensaje = "";
 	$herramienta = "cuestionario";
@@ -10,7 +11,7 @@
 		$pregunta = array_key_exists('pregunta', $_POST) ? $_POST['pregunta'] : null;
 		$respuesta = array_key_exists('respuesta', $_POST) ? $_POST['respuesta'] : null;
 		if ("cuestionario" == $herramienta ) {
-			crearPregunta($pregunta, $respuesta);
+			crearPregunta($pregunta, $respuesta, $idTipoPregunta, $_SESSION['id_cuestionario']);
 		}
 	}
 

@@ -24,13 +24,11 @@ if ($len!=$constPos) {
 }
 
 $objDatos = new clsDatos();
-echo "hfhfh".$id;
-$sql = 'SELECT pregunta, id_pregunta FROM pregunta p WHERE id_preguntados='.$id;
+$sql = 'SELECT pregunta, id_pregunta FROM pregunta p WHERE id_cuestionario='.$id;
+//echo $id;
 $result = $objDatos->hacerConsulta($sql);
 $arreglo_datos = $objDatos->generarArreglo($result);
-    echo var_dump($arreglo_datos);
-
-
+    //echo var_dump($arreglo_datos);
 	$tam=count($arreglo_datos);
 	if ($pos==$tam) {
 		$pregunta = $arreglo_datos[$pos-1];	
@@ -44,16 +42,22 @@ $arreglo_datos = $objDatos->generarArreglo($result);
 		$respu = $arreglo_datos[$pos];
 	}
 
-
 	$sqls = 'SELECT * 
 	FROM opcion, pregunta
 	WHERE opcion.id_pregunta=pregunta.id_pregunta and pregunta.id_pregunta = '.$pregunta['id_pregunta'];
-
-
 	$resultado = $objDatos->hacerConsulta($sqls);
 	$raws = $objDatos->generarArreglo($resultado);
-	    //$raws = pg_fetch_all($resultado);
+	//echo var_dump($raws);
 
+	$sqlt = 'SELECT id_tipo_pregunta
+	FROM pregunta
+	where pregunta.id_cuestionario ='.$id;
+	$cuest = $objDatos->hacerConsulta($sqlt);
+	$cuesti = $objDatos->generarArreglo($cuest);
+	foreach ($cuesti as $cu ) {
+		$idCuest = $cu['id_tipo_pregunta'];
+	}
+	echo $idCuest;
 
 if ($_POST) {
 
@@ -69,7 +73,7 @@ if ($_POST) {
 		$result = $objDatos->hacerConsulta($sqlr);
 		$arreglo_datos = $objDatos->generarArreglo($result);
 		$respuesta = $arreglo_datos[0]['respuesta'];	
-	    	echo $respuesta;
+	    	//echo $respuesta;
 		if($respuesta){ 
 			print '<script language="JavaScript">'; 
 			print 'alert("Respuesta correcta");'; 
@@ -85,12 +89,12 @@ if ($_POST) {
 
 	}
 }
-echo "tam".$tam."pos".$pos;
+//echo "tam".$tam."pos".$pos;
 $len.=$constPos;
 if ($pos==$tam) {
 	header("location:ranking.php?resp=".$resultadoResp);	
 }else{
-	header("preguntadosU.php");
+	header("cuestionarioU.php");
 }
 ?>
 
@@ -145,35 +149,46 @@ if ($pos==$tam) {
 			<header>
 				<h2>PREGUNTADOS</h2>
 			</header>
-			<form action="preguntadosU.php" method="post">
+			<form action="cuestionarioU.php" method="post">
 				<input type='hidden' name='posPreg' value="<?php echo $len ?>">
 				<?php
-				echo "<H1><b> PREGUNTA : ".$pregunta['pregunta']."</b></h1>";
+				echo "<b> PREGUNTA : ".$pregunta['pregunta']."</b>";
 				?><br><br>
-				<table border="10">
-					<tr>
+				<?php if ($idCuest == 1) {
+							echo "<textarea class='textarea1' name='respuesta' rows=automatically cols=automatically placeholder='RESPUESTA'></textarea><br><br>";
+					}elseif ($idCuest == 2) {
+						echo "<table border='10'>
+						<tr>
 						<th><H3>ID</H3></th>
 						<th><h3>OPCION</h3></th>
-					</tr>
-					<?php
-					foreach ($raws as $raw) {
-						?>
-						<tr>
-							<th><?php echo $raw['id_opcion']; ?></th>
-							<th><?php echo $raw['opcion']; ?></th>
-						</tr>
-						<?php 
-					} 
-					?>
-				</table>
-				<b>SELECCIONE SU RESPUESTA:<br></b><br>
-				<select name="respuesta" id="respuesta">
-					<?php
-					foreach ($raws as $raw) {
+						</tr>";
+						foreach ($raws as $raw) {
+							echo "<tr><th>".$raw['id_opcion']."</th><th>".$raw['opcion']."</th></tr>";
+						}
+						echo "</table>";
+						echo "<b>SELECCIONE SU RESPUESTA:<br></b><br>
+						<select name='respuesta' id='respuesta'>";
+						foreach ($raws as $raw) {
 						echo '<option value="'.$raw['opcion'].'" selected>'.$raw['opcion'].'</option>';
 					}
+					}elseif ($idCuest == 3) {
+						echo "string";
+					}
+					?>
+
+
+				
+					
+					
+					<?php
+					
 					?>
 				</select><br><br>
+
+
+
+
+
 
 				<input type="submit" name="guardar" value="RESPONDER"><br><br><br>
 			</form>

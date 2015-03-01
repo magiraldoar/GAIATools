@@ -71,7 +71,7 @@
 							<table border="1">
 						        
 						            <tr>
-						                <th>ID PREGUNTADOS</th>
+						                <th><h1>ID PREGUNTADOS</h1></th>
 						                <th>NOMBRE</th>
 						                <th>DESCRIPCION</th>
 						                <th>AREA</th>

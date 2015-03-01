@@ -1,6 +1,5 @@
-<!DOCTYPE HTML>
-
 <?php
+	session_start();
 	include("base/inicioSql.php");
 	$mensaje = "";
 	$idTipoPregunta = 2;
@@ -12,7 +11,7 @@
 		$pregunta = array_key_exists('pregunta', $_POST) ? $_POST['pregunta'] : null;
 		$respuesta = array_key_exists('respuesta', $_POST) ? $_POST['respuesta'] : null;
 		if ("cuestionario" == $herramienta ) {
-			crearPregunta($pregunta, $respuesta);
+			crearPreguntaCuestionario($pregunta, $respuesta, $idTipoPregunta, $_SESSION['id_cuestionario']);
 		}
 		
 
@@ -45,6 +44,7 @@
 		$mensaje = "no hay elementos";
 	}
 ?>
+<!DOCTYPE HTML>
 
 <html>
 	<head>
@@ -101,7 +101,7 @@
 				</h1>
 						<h2>PREGUNTA CERRADA</h2>
 					</header>
-					<form action="preguntados.php" method="post">
+					<form action="preguntaCerrada.php" method="post">
 						<p class="preg">
 							
 							pregunta:<br><br>  
@@ -142,10 +142,6 @@
 				</ul>
 			
 			</footer>
-
-
-
-
 </body>
 </html>
 <?php

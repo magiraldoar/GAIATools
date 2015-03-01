@@ -1,15 +1,18 @@
 <?php
-include("base/inicioSql.php");
-require_once("configuracion/clsBD.php");
-$objDatos = new clsDatos();
-session_start();
-$nombre =$_SESSION['usuario'];
+    require_once("configuracion/clsBD.php");
+    $result;
+    $objDatos = new clsDatos();
 
-?>
+    $sql = 'SELECT * 
+    		FROM cuestionario';
+    $resultado = $objDatos->hacerConsulta($sql);
+    $raws = pg_fetch_all($resultado);
+    
+ ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>GAIA Tools/CuestionarioObjetos </title>
+		<title>GAIA Tools/Principal </title>
 		<br>
 		<a  href="indexU.php"><img src="12.png" width="600" heigth="600"></a>
 		
@@ -23,6 +26,7 @@ $nombre =$_SESSION['usuario'];
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
+		
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -36,6 +40,9 @@ $nombre =$_SESSION['usuario'];
 	
 			<header id="header" class="alt">
 				<nav id="nav">
+					<header>
+					<h2>LISTA PREGUNTADOS</h2>
+					</header>
 					<ul>
 						<li class="current"><a href="index.html">Quienes Somos</a></li>
 						<li class="submenu">
@@ -57,30 +64,47 @@ $nombre =$_SESSION['usuario'];
 				
 			
 				<div class="inner">
-					
 					<header>
-						<h1>BIENVENIDO A CUESTIONARIO
-						<?php
-						echo $nombre;
-						?>
-						</h1>
-						<h2>CUESTIONARIO</h2>
-						
+					<h2>LISTA DE PREGUNTADOS</h2>
 					</header>
-					<H3>ACONTINUACION MUESTRA LOS CUETIONARIO DISPONIBLES EN EL MOMENTO </H3>
-					<div id="ta">
-					<p>
-					<?php
-					listarCuestionario();
-					?>
-					</p>
-					
-					</div>
-				
+
+							<table border="1">
+						        
+						            <tr>
+						                <th>ID CUESTIONARIO</th>
+						                <th>NOMBRE</th>
+						                <th>DESCRIPCION</th>
+						                <th>AREA</th>
+						                <th>AUTOR</th>
+						            </tr>
+						        
+						        <tbody>
+						        <?php
+						            foreach ($raws as $raw) {
+						                    
+						        ?>
+						            <tr>
+						                <td><a href="cuestionarioU.php?id=<?php echo $raw['id_cuestionario']; ?>"><?php echo $raw['id_cuestionario']; ?></td>
+						                <td><?php echo $raw['nombre']; ?></td>
+						                <td><?php echo $raw['descripcion']; ?></td>
+						                <td><?php echo $raw['area']; ?></td>
+						                <td><?php echo $raw['autor']; ?></td>
+						            </tr>
+						        <?php 
+						            } 
+						        ?>
+						        </tbody>
+						    </table>
+						    <script type="text/javascript">
+			function capturadDato(){
+
+				alert("jkjijk");
+				var id = $("#idPreguntados").val();
+				alert(id);
+			}
+		</script>
 				</div>
-				
 			</section>
-		
 	</body>
 	<footer id="footer">
 			

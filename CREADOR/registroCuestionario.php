@@ -14,11 +14,12 @@
 		$idArea = array_key_exists('area', $_POST) ? $_POST['area'] : null;
 
 		//crearCuestionario($idNombre, $idDescripcion, $idArea, $autor);
-		$sql = "INSERT INTO cuestionario (nombre, descripcion, area, id_ha, autor)
-				VALUES ('mateo','salome','giraldo',1, 'arango') returning id_cuestionario";
+		$sql = "INSERT INTO cuestionario (nombre, descripcion, area, autor, id_ha)
+				VALUES ('$idNombre','$idDescripcion','$idArea','$nombre', 1) returning id_cuestionario";
 		$datos_desordenados = $objDatos->hacerConsulta($sql);
     	$arreglo_datos = $objDatos->generarArreglo($datos_desordenados);
-    	$usuario = $arreglo_datos[0];
+    	$usuario = $arreglo_datos[0]['id_cuestionario'];
+    	$_SESSION['id_cuestionario'] = $usuario;
    		echo "<h1>".$usuario."</h1>";
 		header("location:cuestionario.php");
 	}
