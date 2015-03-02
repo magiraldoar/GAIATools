@@ -4,6 +4,7 @@ $objDatos = new clsDatos();
 session_start();
 $nombre =$_SESSION['usuario'];
 ?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
