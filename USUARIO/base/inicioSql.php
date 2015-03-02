@@ -16,6 +16,24 @@
 		
 	}
 
+	function actualizarResultado($nueva, $id, $nombre){
+		$objUsuar = new clsDatos();	
+		
+
+		$sql= "UPDATE resultado SET puntaje = puntaje + ('$nueva')
+		where id_preguntados = '$id'";
+		$objUsuar->operacionesCrud($sql);
+		
+	}
+	function insertarResultado($tam, $id, $nombre){
+		$objUsuar = new clsDatos();	
+		$sql= "INSERT INTO resultado(id_preguntados, nombre_usuario, puntaje)
+		VALUES ('$id', '$nombre', 0)";
+		$objUsuar->operacionesCrud($sql);
+		
+	}
+
+
 	function crearPreguntados($idNombre, $idDescripcion, $idArea, $idAutor){
 		$objUsuar = new clsDatos();
 

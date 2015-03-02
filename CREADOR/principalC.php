@@ -53,7 +53,7 @@ $nombre =$_SESSION['usuario'];
 		<div class="inner">
 			
 			<header>
-				<b><h1>USUARIO:
+				<b><h1>
 					<?php
 					echo $nombre;
 					?></b>
@@ -65,7 +65,7 @@ $nombre =$_SESSION['usuario'];
 					
 					<a  href="registroPreguntados.php"><img src="8.png" width="100" heigth="100"></a>
 					<a  href="registroCuestionario.php"><img src="4.png" width="150" heigth="150"></a><br>
-					<a  href="discapacidad.html"><img src="5.png" width="150" heigth="150"></a>
+					<a  href="#"><img src="5.png" width="150" heigth="150"></a>
 					<a  href="EditorTextos.php"><img src="6.png" width="150" heigth="150"></a>
 
 				</p>

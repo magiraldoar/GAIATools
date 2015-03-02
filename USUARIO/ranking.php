@@ -1,4 +1,5 @@
 <?php
+	session_start();
     require_once("configuracion/clsBD.php");
     $result;
     $objDatos = new clsDatos();

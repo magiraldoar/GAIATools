@@ -1,4 +1,6 @@
 <?php
+	session_start();
+	$nombre =$_SESSION['usuario'];
     require_once("configuracion/clsBD.php");
     $result;
     $objDatos = new clsDatos();
@@ -41,6 +43,10 @@
 			<header id="header" class="alt">
 				<nav id="nav">
 					<header>
+						<b><h1>
+					<?php
+					echo $nombre;
+					?></b>
 					<h2>LISTA PREGUNTADOS</h2>
 					</header>
 					<ul>

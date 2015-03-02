@@ -1,11 +1,13 @@
 <?php
 session_start();
+$nombre =$_SESSION['usuario'];
 require_once("configuracion/clsBD.php");
-
+include("base/inicioSql.php");
 $result;
-$constPos='a';
+$resultado ='b';
+$constPos ='a';
 $len= array_key_exists('posPreg', $_POST) ? $_POST['posPreg'] : $constPos;
-
+$sol=array_key_exists('posPreg', $_POST) ? $_POST['posPreg'] : $resultado;
 
 if ($_GET) {
 	$id=$_GET['id'];
@@ -22,13 +24,19 @@ if ($len!=$constPos) {
 }else{
 	$pos=0;
 }
+if ($sol!=$resultado) {	
+	$nuevpos=strlen($sol)-1;
+
+}else{
+	$nuevpos=0;
+}
+
 
 $objDatos = new clsDatos();
-echo "hfhfh".$id;
 $sql = 'SELECT pregunta, id_pregunta FROM pregunta p WHERE id_preguntados='.$id;
 $result = $objDatos->hacerConsulta($sql);
 $arreglo_datos = $objDatos->generarArreglo($result);
-    echo var_dump($arreglo_datos);
+
 
 
 	$tam=count($arreglo_datos);
@@ -56,7 +64,7 @@ $arreglo_datos = $objDatos->generarArreglo($result);
 
 
 if ($_POST) {
-
+	$resultado=0;
 	$idRespuesta = array_key_exists('respuesta', $_POST) ? $_POST['respuesta'] : null;
 	$respuesta="";
 
@@ -69,24 +77,32 @@ if ($_POST) {
 		$result = $objDatos->hacerConsulta($sqlr);
 		$arreglo_datos = $objDatos->generarArreglo($result);
 		$respuesta = $arreglo_datos[0]['respuesta'];	
-	    	echo $respuesta;
+	    	//echo $respuesta;
 		if($respuesta){ 
+			$nueva = (1 / $tam)*100;
+			echo $nueva;
+			actualizarResultado($$nueva, $id, $nombre);
 			print '<script language="JavaScript">'; 
 			print 'alert("Respuesta correcta");'; 
 			print '</script>';
 			$resultadoResp = true;
+			$sol.=$resultado;
+			
 		}else{
 			print '<script language="JavaScript">'; 
 			print 'alert("Respuesta incorrecta");'; 
 			print '</script>';
 			$resultadoResp = false;
 		}
+	//echo $id;
+	//echo $tam;
 			//echo "<input type='hidden' name='posPreg' value='".$len."'>";
 
 	}
 }
-echo "tam".$tam."pos".$pos;
+//echo "tam".$tam."pos".$pos."resp".$nuevpos;
 $len.=$constPos;
+
 if ($pos==$tam) {
 	header("location:ranking.php?resp=".$resultadoResp);	
 }else{
@@ -143,6 +159,10 @@ if ($pos==$tam) {
 	<section id="banner">
 		<div id="content" class="inner">
 			<header>
+				<b><h1>
+					<?php
+					echo $nombre;
+					?></b>
 				<h2>PREGUNTADOS</h2>
 			</header>
 			<form action="preguntadosU.php" method="post">

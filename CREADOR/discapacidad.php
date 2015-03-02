@@ -59,7 +59,7 @@ $nombre =$_SESSION['usuario'];
 				<div class="inner">
 					
 					<header>
-						<b><h1>Bienvenido
+						<b><h1>
 						<?php
 						echo $nombre;
 						?></b>

@@ -95,7 +95,7 @@ session_start();
 				<div id="content" class="inner">
 					
 					<header>
-						<b><h1>USUARIO:
+						<b><h1>
 						<?php
 						echo $nombre;
 						?></b>
@@ -124,7 +124,7 @@ session_start();
 					</form>
 					
 					<a  href="preguntados.php"><img src="mas.png" width="70" heigth="70" align="right"></a>
-					<a  href="principalC.html"><img src="15.png" width="70" heigth="70" align="right"></a>
+					<!--<a  href="princiypalC.html"><img src="15.png" width="70" heigth="70" align="right"></a>-->
 					<a  href="registroPreguntados.php"><img src="17.png" width="70" heigth="70" align="right"></a>
 				</div>
 			</section>

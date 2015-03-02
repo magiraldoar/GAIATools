@@ -1,9 +1,8 @@
 <?php
+session_start();
 require_once("configuracion/clsBD.php");
 $objDatos = new clsDatos();
-session_start();
 $nombre =$_SESSION['usuario'];
-echo $nombre;
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -53,7 +52,7 @@ echo $nombre;
 	<section id="banner">
 		<div class="inner">
 			<header>
-				<b><h1>Bienvenido
+				<b><h1>
 					<?php
 					echo $nombre;
 					?></b>

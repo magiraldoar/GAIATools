@@ -73,7 +73,7 @@
 				<div id="content" class="inner">
 					
 					<header>
-						<b><h1>USUARIO:
+						<b><h1>
 						<?php
 						echo $nombre;
 						?></b>

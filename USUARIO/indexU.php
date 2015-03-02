@@ -10,7 +10,7 @@ if($_POST){
     if($user == null || $pass == null){
         $mensaje = "El usuario y la clave son obligatorios";
     } else {
-        $sql = "SELECT id_usuario
+        $sql = "SELECT id_usuario, id_tipo_usuario
                 FROM usuario u
                 WHERE u.usuario ='$user' AND u.clave = MD5('$pass') AND u.id_tipo_usuario='$id_tipo_usuario'";
         $datos_desordenados = $objDatos->hacerConsulta($sql);
@@ -19,7 +19,7 @@ if($_POST){
         $_SESSION['usuario']=$user;
         if($usuario > 0 ) {
         		 
-            	 header("Location: principalU.html");       
+            	 header("Location: principalU.php");       
         } else {
             $mensaje = "Usuario o clave invalidos";  
         }

@@ -1,5 +1,6 @@
 <?php
 session_start();
+$nombre =$_SESSION['usuario'];
 require_once("configuracion/clsBD.php");
 
 $result;
@@ -147,6 +148,11 @@ if ($pos==$tam) {
 	<section id="banner">
 		<div id="content" class="inner">
 			<header>
+				<b><h1>
+					<?php
+					echo $nombre;
+					?></b>
+				</h1>
 				<h2>PREGUNTADOS</h2>
 			</header>
 			<form action="cuestionarioU.php" method="post">
