@@ -110,4 +110,4 @@ $nombre =$_SESSION['usuario'];
 			return false;
 		}
 	};
-	</script>
+</script>

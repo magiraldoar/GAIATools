@@ -54,7 +54,8 @@
 								<li><a href="contact.html">CUESTIONARIO</a></li>
 							</ul>
 						</li>
-						
+						<li class="current"><a href="logout.php" onClick="return confirmClick();">CERRAR SESIÓN</a></li>
+
 					</ul>
 				</nav>
 			</header>
@@ -65,7 +66,7 @@
 				<div id="content" class="inner">
 					
 					<header>
-						<b><h1>USUARIO:
+						<b><h1>
 					<?php
 					echo $nombre;
 					?></b>
@@ -84,8 +85,7 @@
 					<input type="submit" value="GUARDAR"><br><br>
 				</form>
 					<a  href="editorTextos.php"><img src="mas.png" width="70" heigth="70" align="right">  </a>
-					<a  href="principalC.html"><img src="15.png" width="70" heigth="70" align="right"> "  " </a>
-					<a  href="principalC.html"><img src="17.png" width="70" heigth="70" align="right"> </a>
+					<a  href="principalC.php"><img src="17.png" width="70" heigth="70" align="right"> </a>
 					
 					</p>
 					
@@ -115,3 +115,12 @@
 <?php
     $objDatos->cerrarConexion();
 ?>
+<script type="text/javascript">
+	function confirmClick() {
+		if(confirm("desea cerrar sesión?")) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+</script>

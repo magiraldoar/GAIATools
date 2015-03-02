@@ -60,7 +60,7 @@ session_start();
 								<li><a href="contact.html">CUESTIONARIO</a></li>
 							</ul>
 						</li>
-						
+						<li class="current"><a href="logout.php" onClick="return confirmClick();">CERRAR SESIÓN</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -117,3 +117,12 @@ session_start();
 <?php
     $objDatos->cerrarConexion();
 ?>
+<script type="text/javascript">
+	function confirmClick() {
+		if(confirm("desea cerrar sesión?")) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+</script>

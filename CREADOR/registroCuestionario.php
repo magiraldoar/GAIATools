@@ -21,7 +21,7 @@
     	$usuario = $arreglo_datos[0]['id_cuestionario'];
     	$_SESSION['id_cuestionario'] = $usuario;
    		echo "<h1>".$usuario."</h1>";
-		header("location:cuestionario.php");
+		header("location:preguntaAbierta.php");
 	}
 		
 ?>
@@ -63,12 +63,11 @@
 								<li><a href="contact.html">CUESTIONARIO</a></li>
 							</ul>
 						</li>
-						
+						<li class="current"><a href="logout.php" onClick="return confirmClick();">CERRAR SESIÓN</a></li>
 					</ul>
 				</nav>
 			</header>
-			<section>
-			</section>
+			
 			<section id="banner">
 				<div id="content" class="inner">
 					
@@ -119,6 +118,15 @@
 
 	</body>
 </html>
+<script type="text/javascript">
+	function confirmClick() {
+		if(confirm("desea cerrar sesión?")) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+</script>
 <?php
     $objDatos->cerrarConexion();
 ?>

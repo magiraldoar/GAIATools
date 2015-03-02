@@ -43,7 +43,7 @@ $nombre =$_SESSION['usuario'];
 						<li><a href="no-sidebar.html">LECTOR Y EDITOR DE TEXTO</a></li>
 						<li><a href="contact.html">CUESTIONARIO</a></li>
 					</ul>
-					<li class="current"><a href="indexC.php" onClick="return confirmClick();">CERRAR SESIÓN</a></li>
+					<li class="current"><a href="logout.php" onClick="return confirmClick();">CERRAR SESIÓN</a></li>
 				</li>
 				
 			</ul>

@@ -43,10 +43,7 @@
 			<header id="header" class="alt">
 				<nav id="nav">
 					<header>
-						<b><h1>
-					<?php
-					echo $nombre;
-					?></b>
+						
 					<h2>LISTA PREGUNTADOS</h2>
 					</header>
 					<ul>
@@ -71,6 +68,10 @@
 			
 				<div class="inner">
 					<header>
+						<b><h1>
+					<?php
+					echo $nombre;
+					?></b>
 					<h2>LISTA DE PREGUNTADOS</h2>
 					</header>
 
