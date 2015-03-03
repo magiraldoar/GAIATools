@@ -7,6 +7,9 @@ $herramienta = "cuestionario";
 require_once("configuracion/clsBD.php");
 $objDatos = new clsDatos();
 $nombre =$_SESSION['usuario'];
+if ($_POST) {
+	# code...
+
 if ($_POST["guardarAbierta"]) {
 	$idTipoPregunta = 1;
 	$pregunta = array_key_exists('pregunta', $_POST) ? $_POST['pregunta'] : null;
@@ -59,6 +62,7 @@ if ($_POST["guardarVF"]) {
 	if ("cuestionario" == $herramienta ) {
 		crearPreguntaCuestionario($pregunta, $respuesta, $idTipoPregunta, $_SESSION['id_cuestionario']);
 	}
+}
 }
 ?>
 <!DOCTYPE HTML>

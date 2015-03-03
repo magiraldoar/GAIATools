@@ -46,6 +46,11 @@ $arreglo_datos = $objDatos->generarArreglo($result);
 		$pregunta = $arreglo_datos[$pos];
 	}
 
+			if ($pos == 0) {
+				eliminarResultado($nombre);
+				insertarResultado($id, $nombre);
+			}
+
 	if ($pos>0) {
 		$respu = $arreglo_datos[$pos-1];
 	}else{
@@ -62,7 +67,6 @@ $arreglo_datos = $objDatos->generarArreglo($result);
 	$raws = $objDatos->generarArreglo($resultado);
 	    //$raws = pg_fetch_all($resultado);
 
-
 if ($_POST) {
 	$resultado=0;
 	$idRespuesta = array_key_exists('respuesta', $_POST) ? $_POST['respuesta'] : null;
@@ -78,10 +82,13 @@ if ($_POST) {
 		$arreglo_datos = $objDatos->generarArreglo($result);
 		$respuesta = $arreglo_datos[0]['respuesta'];	
 	    	//echo $respuesta;
-		if($respuesta){ 
+		if($respuesta){
+			#$sql='SELECT *
+			#	  FROM resultado r
+			#	  WHERE r.id_preguntados = '.$id.' and r.nombre_usuario = '.$nombre''
 			$nueva = (1 / $tam)*100;
 			echo $nueva;
-			actualizarResultado($$nueva, $id, $nombre);
+			actualizarResultado($nueva, $id, $nombre);
 			print '<script language="JavaScript">'; 
 			print 'alert("Respuesta correcta");'; 
 			print '</script>';
@@ -100,7 +107,7 @@ if ($_POST) {
 
 	}
 }
-//echo "tam".$tam."pos".$pos."resp".$nuevpos;
+echo "tam".$tam."pos".$pos;
 $len.=$constPos;
 
 if ($pos==$tam) {

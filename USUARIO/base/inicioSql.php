@@ -25,10 +25,16 @@
 		$objUsuar->operacionesCrud($sql);
 		
 	}
-	function insertarResultado($tam, $id, $nombre){
+	function insertarResultado($id, $nombre){
 		$objUsuar = new clsDatos();	
 		$sql= "INSERT INTO resultado(id_preguntados, nombre_usuario, puntaje)
 		VALUES ('$id', '$nombre', 0)";
+		$objUsuar->operacionesCrud($sql);
+		
+	}
+	function eliminarResultado($nombre){
+		$objUsuar = new clsDatos();	
+		$sql= "DELETE FROM resultado WHERE nombre_usuario = '$nombre'";
 		$objUsuar->operacionesCrud($sql);
 		
 	}

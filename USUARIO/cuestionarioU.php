@@ -52,7 +52,7 @@ $arreglo_datos = $objDatos->generarArreglo($result);
 
 	$sqlt = 'SELECT id_tipo_pregunta
 	FROM pregunta
-	where pregunta.id_cuestionario ='.$id;
+	WHERE pregunta.id_cuestionario ='.$id.' AND pregunta.id_pregunta ='.$pregunta['id_pregunta'];
 	$cuest = $objDatos->hacerConsulta($sqlt);
 	$cuesti = $objDatos->generarArreglo($cuest);
 	foreach ($cuesti as $cu ) {
