@@ -1,18 +1,18 @@
-<?php
+	<?php
 	session_start();
 	$nombre =$_SESSION['usuario'];
-    require_once("configuracion/clsBD.php");
-    $result;
-    $objDatos = new clsDatos();
+	require_once("configuracion/clsBD.php");
+	$result;
+	$objDatos = new clsDatos();
 
-    $sql = 'SELECT * 
-    		FROM preguntados';
-    $resultado = $objDatos->hacerConsulta($sql);
-    $raws = pg_fetch_all($resultado);
-    
- ?>
-<!DOCTYPE HTML>
-<html>
+	$sql = 'SELECT * 
+			FROM preguntados';
+	$resultado = $objDatos->hacerConsulta($sql);
+	$raws = pg_fetch_all($resultado);
+
+	?>
+	<!DOCTYPE HTML>
+	<html>
 	<head>
 		<title>GAIA Tools/Principal </title>
 		<br>
@@ -38,8 +38,8 @@
 		
 	</head>
 	<body class="index">
-	
-	
+
+
 			<header id="header" class="alt">
 				<nav id="nav">
 					<header>
@@ -128,12 +128,12 @@
 				</ul>
 			
 			</footer>
-	
-</html>
-<!--script type="text/javascript">
+
+	</html>
+	<!--script type="text/javascript">
 	$("#idPreguntados").click(function(){
 		alert("jkjijk");
 		var id = $("#idPreguntados").val();
 		alert(id);
 	});
-</script-->
+	</script-->

@@ -13,8 +13,9 @@
 
 	$idRespuesta = array_key_exists('resp', $_GET) ? $_GET['resp'] : null;
 		if($idRespuesta==1){ 
-			print '<script language="JavaScript">'; 
+			print '<script language="JavaScript">';
 			print 'alert("Respuesta correcta");'; 
+			print 'alert("HAS TERMINADO!!!!");'; 
 			print '</script>';
 			$resultadoResp = true;
 		}else{
@@ -80,16 +81,12 @@
 					<header>
 						<h2>RESULTADOS</h2>
 					</header>
-					<form action="preguntados.php" method="post">
-
-							<table border="1">
+					<table border="1">
 						        
 						            <tr>
-						                <th>ID PREGUNTADOS</th>
-						                <th>NOMBRE</th>
-						                <th>DESCRIPCION</th>
-						                <th>AREA</th>
-						                <th>AUTOR</th>
+						                <th><h1>NOMBRE</h1></th>
+						                <th>ID PREGUNTA</th>
+						                <th>PUNTAJE</th>
 						            </tr>
 						        
 						        <tbody>
@@ -98,39 +95,15 @@
 						                    
 						        ?>
 						            <tr>
+						                <td><?php echo $raw['nombre_usuario']; ?></td>
 						                <td><?php echo $raw['id_preguntados']; ?></td>
-						                <td><?php echo $raw['nombre']; ?></td>
-						                <td><?php echo $raw['descripcion']; ?></td>
-						                <td><?php echo $raw['area']; ?></td>
-						                <td><?php echo $raw['autor']; ?></td>
+						                <td><?php echo $raw['puntaje']; ?></td>
 						            </tr>
 						        <?php 
 						            } 
 						        ?>
 						        </tbody>
 						    </table>
-							
-						
-						
-					</form>
-					<!--<header>
-						<h1>BIENVENIDO A PREGUNTADOS
-						<?php
-						echo $nombre;
-						?>
-						</h1>
-						<h2>PREGUNTADOS</h2>
-						
-					</header>
-					<H3>ACONTINUACION MUESTRA LOS PREGUNTADOS DISPONIBLES EN EL MOMENTO </H3>
-					<div id="ta">
-					<p>
-					<?php
-					listarPreguntados();
-					?>
-					</p>
-					
-					</div>-->
 				
 				</div>
 				

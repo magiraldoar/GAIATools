@@ -478,6 +478,9 @@
 		vertical-align: center;
 		width: 100%;
 		color: white;
+		text-align: center;
+		border-collapse: collapse;
+		border-color: white;
 	}
 	table a {
 		color: white;
@@ -489,6 +492,7 @@
 		}
 
 			table.default tbody tr {
+				text-align: center;
 				color: white;
 				border-bottom: solid 10px;
 			}
@@ -508,7 +512,7 @@
 				text-align: center;
 				font-weight: 400;
 				padding: 0.5em 1em 0.5em 1em;
-				text-align: left;
+				text-align: center;
 			}
 
 			table.default thead {
@@ -958,6 +962,9 @@
 			#banner1 .inner footer {
 				margin: 2em 0 0 0;
 			}
+	#banne2 .inner table {
+		border-collapse: collapse; 
+	}
 
 /* Main */
 

@@ -46,10 +46,10 @@ $arreglo_datos = $objDatos->generarArreglo($result);
 		$pregunta = $arreglo_datos[$pos];
 	}
 
-			if ($pos == 0) {
-				eliminarResultado($nombre);
-				insertarResultado($id, $nombre);
-			}
+	if ($pos == 0) {
+		eliminarResultado($nombre);
+		insertarResultado($id, $nombre);
+	}
 
 	if ($pos>0) {
 		$respu = $arreglo_datos[$pos-1];
