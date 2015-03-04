@@ -67,6 +67,70 @@ if ($_POST) {
    <link rel="stylesheet" href="css/style-wide.css" />
    <link rel="stylesheet" href="css/style-noscript.css" />
  </noscript>
+<script>
+    var annyangScript = document.createElement('script');
+    if (/localhost/.exec(window.location)) {
+      annyangScript.src = "./vendor/js/annyang.js"
+    } else {
+      annyangScript.src = "./vendor/js/annyang.min.js"
+    }
+    document.write(annyangScript.outerHTML)
+  </script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+  "use strict";
+
+  // first we make sure annyang started succesfully
+  if (annyang) {
+
+      // define our commands.
+    // * The key is what you want your users to say say.
+    // * The value is the action to do.
+    //   You can pass a function, a function name (as a string), or write your function as part of the commands object.
+    var commands = {
+      'mi nombre es *v' : function(v){
+         var nom= document.getElementById('nombre');
+         nom.value=v; 
+        },
+      'mi apellido es *v' : function(v){
+         var nom= document.getElementById('apellido');
+         nom.value=v; 
+        },  
+       'mi correo es *v' : function(v){
+         var nom= document.getElementById('correo');
+         nom.value=v; 
+        },   
+        'mi sexo es *v' : function(v){
+         var nom= document.getElementById('sexo');
+        nom.value =v;       
+        },  
+      };
+
+    // OPTIONAL: activate debug mode for detailed logging in the console
+    annyang.debug();
+    // Add voice commands to respond to
+    annyang.addCommands(commands);
+    // OPTIONAL: Set a language for speech recognition (defaults to English)
+    annyang.setLanguage('es');
+    // Start listening. You can call this here, or attach this call to an event, button, etc.
+    annyang.start();
+  } else {
+    $(document).ready(function() {
+      $('#unsupported').fadeIn('fast');
+    });
+  }
+
+  var scrollTo = function(identifier, speed) {
+    $('html, body').animate({
+        scrollTop: $(identifier).offset().top
+    }, speed || 1000);
+  }
+  </script>
+  <link rel="stylesheet" href="css/main.min.css" />
+
+
+
+
 </head>
 <body class="index">
 
@@ -106,8 +170,9 @@ if ($_POST) {
      Correo Electrónico:<br>
      <input type="email" name="correo" id="correo"  size="30" placeholder="alguien@example.com"><br><br>
      Sexo:<br>
-     <input type="radio" name="sexo" id="sexo" value="Masculino" checked>Masculino
-     <input type="radio" name="sexo" id="sexo" value="Femenino">Femenino
+     <input type="text" name="sexo" id="sexo" value="Masculino" >
+    
+     
      <br><br>
      País:<br><br>
      <select name="pais" >
@@ -437,6 +502,20 @@ Contraseña:<br><br>
 </ul>
 
 </footer>
+<script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24775009-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+ <script src="./vendor/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
 
 </body>
 </html>
