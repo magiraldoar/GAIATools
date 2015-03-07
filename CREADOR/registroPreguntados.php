@@ -91,6 +91,7 @@ session_start();
 						
 						<input type="submit" value="REGISTRAR"><br>
 						</form>
+						<input type="button" onclick="location.href='principalC.php';" value="SALIR"><br>
 					</p>
 					</form>
 						

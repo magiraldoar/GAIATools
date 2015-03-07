@@ -96,6 +96,7 @@
 						
 					</p>
 					</form>
+					<input type="button" onclick="location.href='principalC.php';" value="SALIR"><br>
 				</div>
 			</section>
 		
