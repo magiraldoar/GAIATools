@@ -8,7 +8,6 @@ require_once("configuracion/clsBD.php");
 $objDatos = new clsDatos();
 $nombre =$_SESSION['usuario'];
 if ($_POST) {
-	# code...
 
 if ($_POST["guardarAbierta"]) {
 	$idTipoPregunta = 1;

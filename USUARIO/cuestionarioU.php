@@ -61,8 +61,125 @@
 		echo $idCuest;
 
 	if ($_POST) {
+		if($_POST['idCuestionario']==1){
+			?>
+			<script>
+		var pos=0;
+		
+		function changeColor(pos){
+			var colores =["#FF0000","#DF0101","#DF3A01",//"#FF4000",
+			"#DF7401","#FF8000","#DBA901",//"#FFBF00",
+			"#D7DF01","#FFFF00","#F7FE2E",
+			"#A5DF00","#74DF00","#3ADF00","#01DF01","#01DF3A"];//,"#00FF00"];
+			document.getElementById('panel').style.backgroundColor = colores[pos];
+		}
 
-		$idRespuesta = array_key_exists('respuesta', $_POST) ? $_POST['respuesta'] : null;
+		function calificar(){
+			var string = $("#texto").val();
+			var palClaves = $("#clave").val();
+			normalizar(string, palClaves);
+		}
+
+		function normalizar(string, palClaves){
+			//var segimiento="";
+			var j=0, pal, tamEst, tamPro, tamMin, dOverlap, contRep=0;
+			var respuEstud, respuProfe;
+			var analEstud = new Array();
+			var analProfe = new Array();
+			//convertir la cadena en minuscula
+			string = string.toLowerCase();
+			palClaves = palClaves.toLowerCase();
+			//quita tildes y caracteres especiales ademas de signos de puntuacion, agrupacion, admiracion y otros
+			string = normalize(string);
+			palClaves = normalize(palClaves);
+
+			//palabras es un arreglo separador de palabras
+			respuEstud = string.split(" ");
+			respuProfe = palClaves.split(" ");
+
+			//Retirar espacios en blanco, y palabras de union (a, de, en, un...) StopWord
+			for (var i in respuEstud) {
+				pal=respuEstud[i];
+				if ( !invalidas(pal) ) {
+					analEstud[j]=respuEstud[i];
+					j++;
+				}
+			}
+			j=0;
+			for (var i in respuProfe) {
+				pal=respuProfe[i];
+				if ( !invalidas(pal) ) {
+					analProfe[j]=respuProfe[i];
+					j++;
+				}
+			}
+
+			//ordenar el arreglo
+			analEstud.sort();
+			analProfe.sort();
+
+			for (var i in analEstud ) {
+				for (var k in analProfe ) {
+					if (analEstud[i]==analProfe[k]) {
+						contRep = contRep + 1;
+					}
+				}
+			}
+
+			//tamaños de las cadenas
+			tamEst = analEstud.length;
+			tamPro = analProfe.length;
+
+			if (tamEst>tamPro) {
+				tamMin = tamEst;
+			}else{
+				tamMin = tamPro;
+			}
+			
+			//alert("cont "+contRep+" tamMin "+tamMin);
+			dOverlap = contRep/tamMin;
+			
+			document.getElementById("resultNormalizacion").innerHTML = dOverlap;
+		}
+
+		function normalize (str) {
+			var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÇç´'`,;.:-_^¨{}[]*+~¡?¿!#$%&/()=°!|ºª";
+			var to   = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuucc";
+			var mapping = {};
+
+			for(var i = 0, j = from.length; i < j; i++ ){
+				mapping[ from.charAt( i ) ] = to.charAt( i );
+			}
+
+			var ret = [];
+			for( var i = 0, j = str.length; i < j; i++ ) {
+				var c = str.charAt( i );
+				if( mapping.hasOwnProperty( str.charAt( i ) ) )
+					ret.push( mapping[ c ] );
+				else
+					ret.push( c );
+			}      
+			return ret.join( '' );
+		}
+
+		function invalidas(str){
+			var i, es;
+			var prepos = ['a','ante','bajo','con','de','desde','durante','en','entre','excepto','hacia','hasta','mediante','para','por','salvo','segun','sin','sobre','tras', 'ellos','pero', 'un', 'una', 'al', 'le', 'la', 'lo', 'el', 'los', ''];
+			for (i in prepos ) {
+				if (prepos[i] == str) {
+					es = true;
+					break;
+				}else{
+					es = false;
+				}
+			}
+			return es;
+		}
+	</script>
+			<?php
+		}
+		else{
+			$idRespuesta = array_key_exists('respuesta', $_POST) ? $_POST['respuesta'] : null;
 		$respuesta="";
 
 		if ($idRespuesta!=null) {	
@@ -89,6 +206,8 @@
 				//echo "<input type='hidden' name='posPreg' value='".$len."'>";
 
 		}
+		}
+		
 	}
 	//echo "tam".$tam."pos".$pos;
 	$len.=$constPos;
@@ -157,6 +276,7 @@
 				</header>
 				<form action="cuestionarioU.php" method="post">
 					<input type='hidden' name='posPreg' value="<?php echo $len ?>">
+					<input type='hidden' name='idCuestionario' value="<?php echo $idCuest ?>">
 					<?php
 					echo "<b> PREGUNTA : ".$pregunta['pregunta']."</b>";
 					?><br><br>
@@ -184,21 +304,6 @@
 
 							      echo "<option value='1'>true</option>";
 							      echo "<option value='0'>false</option>";
-							      /*$sql = "SELECT id_tipo_usuario, nombre FROM tipo_usuario";
-							      if ($perfil == 1) {
-							        $sql .= " WHERE id_tipo_usuario = 1";
-							      }
-							      if ($perfil == 2) {
-							        $sql .= " WHERE id_tipo_usuario = 2 ";
-							      }
-							      $arreglo_rol = $objDatos->executeQuery($sql);
-							      if ($arreglo_rol ) {
-							       foreach ($arreglo_rol as $value) {
-							        echo '<option value="'.$value['id_tipo_usuario'].'" selected>'.$value['nombre'].'</option>';
-							      }
-							    }else{
-							     echo '<option>NO HAY VALORES</option>';
-							   }*/
 							   }
 							 echo"</select><br><br>";
 						

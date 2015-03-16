@@ -32,6 +32,7 @@ if($_POST){
 <!DOCTYPE HTML>
 <html>
 	<head>
+
 		<div class="logo"><a href="indexC.php"><img src="12.png" class="icono" width="600" heigth="600" ></a></div>
 		<title>GAIA Tools</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -80,12 +81,13 @@ if($_POST){
 					
 					<header>
 						<h2>INICIAR SESIÓN</h2>
+						<embed src="1.ogg" autostart="true" hidden="true">
 					</header>
 					<center>
 					<p>
 						<form method="post" action="indexC.php">
             			<img src="1.png" width="200" heigth="200"><br><br>
-                		<label id="nombre">Usuario</label><br><input type="text" id="user" name="user" required/><br><br>
+                		<label id="nombre">Usuario</label><br><input type="text" id="user" name="user" required autofocus/ ><br><br>
                 		<label id="nombre">Contraseña</label><br><input type="password" id="pass" name="pass" required/><br><br>
                 		<label id="mensaj"><?php echo $mensaje; ?></label>
                			<br><br>
